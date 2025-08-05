@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-fanspin: spin 2s linear infinite;
+  --animate-ledspin: opacity 2s linear infinite;
+  @keyframes spin {
+    0% {
+      transform: rotate(180deg);
+    }
+  }
+  @keyframes opacity {
+    50% {
+      opacity: 0.2;
+      transform : rotate(3deg)
+    }
+
+  }
+
+  
+}
