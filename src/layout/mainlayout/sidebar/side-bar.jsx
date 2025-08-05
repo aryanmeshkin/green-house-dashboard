@@ -1,11 +1,8 @@
 import React from "react";
-import LogoSidebar from "./components/logosidebar/logo-sideBar";
-import MainSidebar from "./components/mainsidebar/main-sideBar";
-import LiveCards from "../../../features/livecards/livecards";
-import Controls from "../../../features/controls/controls";
-function SideBar() {
-  
+import LogoSidebar from "./components/logosidebar/logo-sidebar";
+import MainSidebar from "./components/mainsidebar/main-sidebar";
 
+function SideBar() {
   return (
     <>
       <aside className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0">
@@ -14,7 +11,6 @@ function SideBar() {
           <MainSidebar />
         </div>
       </aside>
-      
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 function LogoSidebar() {
   return (
@@ -7,7 +7,7 @@ function LogoSidebar() {
         Green House
       </span>
     </a>
-  );
+  )
 }
 
-export default LogoSidebar;
+export default LogoSidebar
