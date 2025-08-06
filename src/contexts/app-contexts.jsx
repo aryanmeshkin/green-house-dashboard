@@ -6,6 +6,7 @@ const initialState = {
   pumpState: false,
   ledState: false,
   powerState: false,
+  menuState: false
 };
 import React from "react";
 
@@ -23,6 +24,9 @@ function AppProvider({ children }) {
   const changepowerState = () => {
     dispatch({ type: "POWERSTATE" });
   };
+  const changeMenuState = () => {
+    dispatch({ type: "MENUTOGGLE" });
+  };
 
   return (
     <AppContext.Provider
@@ -32,6 +36,7 @@ function AppProvider({ children }) {
         changepumpState,
         changeledState,
         changepowerState,
+        changeMenuState,
       }}
     >
       {children}

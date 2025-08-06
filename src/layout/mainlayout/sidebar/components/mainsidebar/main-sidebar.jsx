@@ -1,12 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router";
+import { useAppContext } from "../../../../../contexts/app-contexts";
 
 function MainSidebar() {
+  const { changeMenuState, menuState } = useAppContext();
   return (
     <ul className="space-y-2 font-medium">
       {/* dashboard */}
       <li>
         <NavLink
+          onClick={changeMenuState}
           to="/"
           className={({ isActive }) =>
             isActive
@@ -24,6 +27,7 @@ function MainSidebar() {
       {/* controls */}
       <li>
         <NavLink
+          onClick={changeMenuState}
           to="/controls"
           className={({ isActive }) =>
             isActive
@@ -36,11 +40,11 @@ function MainSidebar() {
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               <path d="M329.956 257.138a254.862 254.862 0 0 0 0 509.724h364.088a254.862 254.862 0 0 0 0-509.724H329.956zm0-72.818h364.088a327.68 327.68 0 1 1 0 655.36H329.956a327.68 327.68 0 1 1 0-655.36z"></path>
@@ -53,6 +57,7 @@ function MainSidebar() {
       {/* graphs */}
       <li>
         <NavLink
+          onClick={changeMenuState}
           to="/graphs"
           className={({ isActive }) =>
             isActive

@@ -21,6 +21,11 @@ const appReducer = (state , action)=>{
                 ...state,
                 powerState : !state.powerState
             }
+        case "MENUTOGGLE" :
+            return{
+                ...state,
+                menuState : !state.menuState
+            }
     }
 }
 export default appReducer

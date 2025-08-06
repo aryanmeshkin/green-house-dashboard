@@ -9,7 +9,7 @@ function AirHumidityCard() {
           <AirHumidityIcon />
         </div>
       </div>
-      <div className="text-3xl font-bold group-hover:-translate-y-1 transition-all duration-300">
+      <div className="text-3xl lg:text-2xl font-bold group-hover:-translate-y-1 transition-all duration-300">
         Air Humidity
       </div>
     </div>
