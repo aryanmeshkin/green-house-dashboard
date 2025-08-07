@@ -1,10 +1,15 @@
-import React from 'react'
-import LiveCards from '../../features/livecards/livecards'
+import React from "react";
+import LiveCards from "../../features/livecards/livecards";
+import DashboardProvider from "../../features/livecards/context/dashboard-context";
 
 function Dashboard() {
   return (
-    <LiveCards/>
-  )
+    <DashboardProvider>
+      <LiveCards />
+    </DashboardProvider>
+  );
 }
 
-export default Dashboard
+
+
+export default Dashboard;
