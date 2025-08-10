@@ -4,6 +4,8 @@ import MainLayout from "./layout/mainlayout/main-layout";
 import Dashboard from "./pages/dashboard/dashboard";
 import GrapgPage from "./pages/graph-page/graph-page";
 import ControlPage from "./pages/control-page/control-page";
+import Login from "./features/identity/components/login";
+import Register from "./features/identity/components/register";
 
 
 const router = createBrowserRouter([
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path : "/login",
+    element : <Login/>
+  },
+  {
+    path : "/register",
+    element : <Register/>
+  }
 ]);
 
 export default router;
