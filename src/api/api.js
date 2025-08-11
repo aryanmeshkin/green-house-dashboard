@@ -1,25 +1,24 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:2000";
-export const api = axios.create({
+
+const BASE_URL = "http://37.152.181.124"
+
+
+const api = axios.create({
   baseURL: BASE_URL,
-  timeout: 2000,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
-api.interceptors.request.use(
-  (config) => {
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+// api.interceptors.request.use(async(config){
+//   const token = localStorage.getItem("",)
+//   if(token){
+//     config.headers = {
+//       Authorization : `bearer ${token}`
+//     }
+//   }
+// })
 
-api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+export const registerUser = (data) => api.post("/auth/register", data);
+export const loginUser = (data) => api.post("/auth/login", data);
+export const getSensorSummary = () => api.get("/sensor-summary");
+export const sendControl = (data) => api.post("/get-control", data);
+
+export default api;
