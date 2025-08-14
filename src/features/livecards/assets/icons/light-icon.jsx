@@ -8,7 +8,7 @@ function LightIcon() {
       className={`${
         ledState
           ? "fill-yellow-300 w-25 h-25 animate-ledspin"
-          : " w-20 h-20 fill-black"
+          : " w-20 h-20 fill-black dark:fill-gray-400"
       }`}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"

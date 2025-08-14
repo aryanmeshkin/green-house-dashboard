@@ -4,7 +4,7 @@ import { useAppContext } from '@/app-contexts'
 function FanIcon() {
   const{fanState} = useAppContext()
   return (
-    <svg className = {`${fanState ? "fill-green-300 w-25 h-25 animate-fanspin"  : "fill-black w-20 h-20"}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
+    <svg className = {`${fanState ? "fill-green-300 w-25 h-25 animate-fanspin"  : "fill-black w-20 h-20 dark:fill-gray-400"}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"

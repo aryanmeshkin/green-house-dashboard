@@ -6,7 +6,7 @@ import GrapgPage from "./pages/graph-page/graph-page";
 import ControlPage from "./pages/control-page/control-page";
 import Login, { loginAction } from "./features/identity/components/login";
 import Register, { RegisterAction } from "./features/identity/components/register";
-import SendMessage from "./message";
+
 
 
 const router = createBrowserRouter([
@@ -40,10 +40,7 @@ const router = createBrowserRouter([
     action : RegisterAction, 
     errorElement : <Register/>
   },
-  {
-    path : "/message",
-    element : <SendMessage/>
-  },
+  
 ]);
 
 export default router;

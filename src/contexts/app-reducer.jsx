@@ -26,6 +26,11 @@ const appReducer = (state , action)=>{
                 ...state,
                 menuState : !state.menuState
             }
+        case "MODE" :
+            return{
+                ...state,
+                modeState : !state.modeState
+            }
     }
 }
 export default appReducer

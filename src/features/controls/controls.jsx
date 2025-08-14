@@ -8,7 +8,7 @@ import { useAppContext } from "../../contexts/app-contexts";
 function Controls() {
   const{menuState} = useAppContext()
   return (
-    <div className="p-4 sm:ml-64">
+    <div className="p-4 sm:ml-64 bg-gray-50 dark:bg-gray-900 h-screen">
       <div className={`${menuState && "mt-12 sm:mt-0"} p-6 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {/* Fan controller */}

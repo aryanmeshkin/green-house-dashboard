@@ -22,9 +22,12 @@ ChartJS.register(
 );
 
 function LineGraph() {
-  const option = {}
-  
-  return <Line options={option} data={lineChartGraph}/>;
+  const option = {
+    responsive : true,
+    maintainAspectRatio: false,
+  };
+
+  return <Line options={option} data={lineChartGraph} />;
 }
 
 export default LineGraph;

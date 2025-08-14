@@ -55,7 +55,7 @@ function SideBar() {
           menuState ? "" : "-translate-x-full sm:translate-x-0"
         }`}
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100 dark:bg-gray-800">
           <LogoSidebar />
           <MainSidebar />
         </div>

@@ -45,7 +45,7 @@ function Login() {
   const routeError = useRouteError();
 
   return (
-    <div className="min-h-screen bg-linear-to-r from-[#a8ff78] to-[#78ffd6] py-6 flex flex-col justify-center items-center relative overflow-hidden sm:py-12">
+    <div className="min-h-screen bg-gradient-to-l from-teal-100 to-teal-500 py-6 flex flex-col justify-center items-center relative overflow-hidden sm:py-12">
       <div className="relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-2xl">
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* USERNAME INPUT */}

@@ -5,7 +5,7 @@ function PowerControl() {
   const {changepowerState} = useAppContext();
   return (
     <button className="cursor-pointer" onClick={changepowerState}>
-      <div className="h-50 rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center ">
+      <div className="h-50 rounded-4xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center ">
         <PowerIcon />
       </div>
     </button>

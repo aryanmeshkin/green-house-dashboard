@@ -4,7 +4,7 @@ import { useAppContext } from "@/app-contexts";
 function WaterPumpIcon() {
   const{pumpState} = useAppContext()
   return (
-    <svg className={`${pumpState ? "stroke-blue-400 w-25 h-25 animate-pulse "  : " w-20 h-20 stroke-black"}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
+    <svg className={`${pumpState ? "stroke-blue-400 w-25 h-25 animate-pulse "  : " w-20 h-20 stroke-black dark:stroke-gray-400"}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
       <rect
         x="10.11"
         y="5.32"

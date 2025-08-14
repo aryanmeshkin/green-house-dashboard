@@ -6,7 +6,11 @@ const initialState = {
   pumpState: false,
   ledState: false,
   powerState: false,
-  menuState: false
+  menuState: false,
+  modeState:
+    localStorage.getItem("mode") !== null
+      ? JSON.parse(localStorage.getItem("mode"))
+      : false,
 };
 import React from "react";
 
@@ -27,6 +31,9 @@ function AppProvider({ children }) {
   const changeMenuState = () => {
     dispatch({ type: "MENUTOGGLE" });
   };
+  const changeMode = () => {
+    dispatch({ type: "MODE" });
+  };
 
   return (
     <AppContext.Provider
@@ -37,6 +44,7 @@ function AppProvider({ children }) {
         changeledState,
         changepowerState,
         changeMenuState,
+        changeMode
       }}
     >
       {children}
