@@ -4,17 +4,17 @@ import { useAppContext } from "../../../../contexts/app-contexts";
 function WaterDashboard() {
   const { changepumpState, pumpState } = useAppContext();
   return (
-    <div onClick={changepumpState} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl flex justify-center items-center">
-      <div
-        className="flex flex-col gap-2 justify-center items-center h-20 w-20"
-        
-      >
+    <div
+      onClick={changepumpState}
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl flex justify-center items-center"
+    >
+      <div className="flex lg:flex-col gap-2 justify-center items-center h-24 w-24">
         <div className="dark:text-white">Water</div>
         <svg
           className={`${
             pumpState
-              ? "stroke-blue-400 w-12 h-12 animate-pulse "
-              : " w-10 h-10 stroke-black dark:stroke-gray-400"
+              ? "stroke-blue-400 w-10 h-10 lg:w-12 lg:h-12 animate-pulse "
+              : " w-8 h-8 lg:w-10 lg:h-10 stroke-black dark:stroke-gray-400"
           }`}
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Link,
@@ -45,12 +45,13 @@ function Login() {
   const routeError = useRouteError();
 
   return (
-    <div className="min-h-screen bg-gradient-to-l from-teal-100 to-teal-500 py-6 flex flex-col justify-center items-center relative overflow-hidden sm:py-12">
-      <div className="relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-2xl">
+    <div className="min-h-screen bg-gradient-to-l from-teal-100 to-teal-500 dark:from-slate-600 dark:to-slate-800 py-6 flex flex-col justify-center items-center  relative overflow-hidden sm:py-12">
+      <div className="relative px-4 pt-7 pb-8 bg-white dark:bg-gray-700 shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-2xl flex flex-col items-center gap-8">
+      <div className="text-5xl text-gray-700 dark:text-white">LOGIN</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* USERNAME INPUT */}
 
-          <label className="block">Username</label>
+          <label className="block dark:text-gray-200">Username</label>
           <input
             {...register("username", {
               required: "Username Required",
@@ -61,7 +62,7 @@ function Login() {
             className={`${
               errors.username
                 ? "border bg-red-50  border-red-500 text-red-900 placeholder-red-700  focus:border-red-500 focus:ring-red-500"
-                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5"
+                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5 dark:placeholder-gray-400"
             } w-full h-10 px-3 rounded-md outline-none`}
             placeholder="Username"
           />
@@ -80,7 +81,7 @@ function Login() {
 
           {/* PASSWORD INPUT */}
 
-          <label className="block">Password</label>
+          <label className="block dark:text-gray-200">Password</label>
 
           <input
             {...register("password", {
@@ -92,7 +93,7 @@ function Login() {
             className={`${
               errors.password
                 ? "border bg-red-50  border-red-500 text-red-900 placeholder-red-700  focus:border-red-500 focus:ring-red-500"
-                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5"
+                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5 dark:placeholder-gray-400"
             } w-full h-10 px-3  rounded-md outline-none`}
             placeholder="Password"
           />
@@ -156,10 +157,13 @@ export default Login;
 export async function loginAction({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
+  console.log(data);
   // Posting User Data To Server
   const response = await loginUser(data);
+  console.log(response);
   if (response.status === 200) {
     localStorage.setItem("token", response?.data.token);
+    // localStorage.setItem("refreshToken" , response?.data.token)
   }
   return response.status === 200;
 }

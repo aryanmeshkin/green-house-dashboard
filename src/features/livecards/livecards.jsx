@@ -16,7 +16,7 @@ import SoilMoistureCard from "./components/cards/soil-moisture-card/soil-moistur
 function LiveCards() {
   const { menuState } = useAppContext();
   return (
-    <div className="p-4 sm:ml-64 bg-gray-50 dark:bg-gray-900 h-full">
+    <div className="p-4 sm:ml-64 bg-gray-50 dark:bg-gray-900 min-h-screen">
       <div
         className={`${
           menuState && "mt-12 sm:mt-0"

@@ -25,6 +25,9 @@ function LineGraph() {
   const option = {
     responsive : true,
     maintainAspectRatio: false,
+    ticks : {
+      fontColor : "#00ffcd"
+    }
   };
 
   return <Line options={option} data={lineChartGraph} />;

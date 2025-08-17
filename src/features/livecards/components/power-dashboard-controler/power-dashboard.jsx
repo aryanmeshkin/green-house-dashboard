@@ -8,13 +8,13 @@ function PowerDashboard() {
       onClick={changepowerState}
       className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl flex justify-center items-center"
     >
-      <div className="flex flex-col gap-2 justify-center items-center h-20 w-20">
+      <div className="flex lg:flex-col gap-2 justify-center items-center h-24 w-24">
         <div className="dark:text-white">Power</div>
         <svg
           className={`${
             powerState
-              ? "fill-orange-400 w-12 h-12 animate-ledspin"
-              : " w-10 h-10 fill-black dark:fill-gray-400"
+              ? "fill-orange-400 w-10 h-10 lg:w-12 lg:h-12 animate-ledspin"
+              : " w-8 h-8 lg:w-10 lg:h-10 fill-black dark:fill-gray-400"
           }`}
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"

@@ -5,9 +5,10 @@ import Dashboard from "./pages/dashboard/dashboard";
 import GrapgPage from "./pages/graph-page/graph-page";
 import ControlPage from "./pages/control-page/control-page";
 import Login, { loginAction } from "./features/identity/components/login";
-import Register, { RegisterAction } from "./features/identity/components/register";
-
-
+import Register, {
+  RegisterAction,
+} from "./features/identity/components/register";
+import AuthLayout from "./layout/auth-layout/auth-layout";
 
 const router = createBrowserRouter([
   {
@@ -29,18 +30,22 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path : "/login",
-    element : <Login/>,
-    action : loginAction,
-    errorElement : <Login/>
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+        action: loginAction,
+        errorElement: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+        action: RegisterAction,
+        errorElement: <Register />,
+      },
+    ],
   },
-  {
-    path : "/register",
-    element : <Register/>,
-    action : RegisterAction, 
-    errorElement : <Register/>
-  },
-  
 ]);
 
 export default router;

@@ -24,7 +24,7 @@ function SideBar() {
       <button
         onClick={changeMenuState}
         type="button"
-        className={`${menuState ? "fixed z-40" : ""} inline-flex items-center p-2 mt-2  text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ${
+        className={` fixed z-40 inline-flex items-center p-2 mt-5  text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ${
           menuState ? "ms-67" : "ml-3"
         }`}
       >

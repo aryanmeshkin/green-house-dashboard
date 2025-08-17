@@ -10,16 +10,14 @@ import Mode from "../../component/mode/mode";
 
 function MainLayout() {
   const { changeMode, modeState } = useAppContext();
-  useEffect(() => {
-    localStorage.getItem("mode", modeState);
-  }, [modeState]);
+  
 
   return (
     <div className={`font-mono ${modeState ? "dark" : ""}`}>
       <SideBar />
       {/* tables */}
       <div>
-        <Mode/>
+        <Navbar/>
         <Outlet />
       </div>
     </div>

@@ -48,12 +48,13 @@ function Register() {
   const routeError = useRouteError();
 
   return (
-    <div className="min-h-screen bg-gradient-to-l from-teal-100 to-teal-500 py-6 flex flex-col justify-center items-center relative overflow-hidden sm:py-12">
-      <div className=" relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-2xl">
+    <div className="min-h-screen bg-gradient-to-l from-teal-100 to-teal-500 dark:from-slate-600 dark:to-slate-800 py-6 flex flex-col justify-center items-center  relative overflow-hidden sm:py-12">
+      <div className=" relative px-4 pt-7 pb-8 bg-white dark:bg-gray-700 shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-2xl flex flex-col items-center gap-8">
+      <div className="text-5xl text-gray-700 dark:text-white">REGISTER</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* USERNAME INPUT */}
 
-          <label className="block">Username</label>
+          <label className="block dark:text-gray-200">Username</label>
           <input
             {...register("username", {
               required: "Username Required",
@@ -64,12 +65,14 @@ function Register() {
             className={`${
               errors.username
                 ? "border bg-red-50  border-red-500 text-red-900 placeholder-red-700  focus:border-red-500 focus:ring-red-500"
-                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5"
+                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5 dark:placeholder-gray-400"
             } w-full h-10 px-3 rounded-md outline-none`}
             placeholder="Username"
           />
           {errors.username && errors.username.type === "required" && (
-            <p className="text-sm text-red-600 mt-1">{errors.username?.message}</p>
+            <p className="text-sm text-red-600 mt-1">
+              {errors.username?.message}
+            </p>
           )}
           {errors.username &&
             (errors.username.type === "minLength" ||
@@ -81,7 +84,7 @@ function Register() {
 
           {/* PASSWORD INPUT */}
 
-          <label className="block">Password</label>
+          <label className="block dark:text-gray-200">Password</label>
 
           <input
             {...register("password", {
@@ -93,12 +96,14 @@ function Register() {
             className={`${
               errors.password
                 ? "border bg-red-50  border-red-500 text-red-900 placeholder-red-700  focus:border-red-500 focus:ring-red-500"
-                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5"
+                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5 dark:placeholder-gray-400"
             } w-full h-10 px-3  rounded-md outline-none`}
             placeholder="Password"
           />
           {errors.password && errors.password.type === "required" && (
-            <p className="text-sm text-red-600 mt-1">{errors.password?.message}</p>
+            <p className="text-sm text-red-600 mt-1">
+              {errors.password?.message}
+            </p>
           )}
           {errors.password &&
             (errors.password.type === "minLength" ||
@@ -110,7 +115,9 @@ function Register() {
 
           {/* CONFIRM PASSWORD INPUT */}
 
-          <label className="block">Confirm Password</label>
+          <label className="block dark:text dark:text-gray-200">
+            Confirm Password
+          </label>
 
           <input
             {...register("confirmPassword", {
@@ -125,7 +132,7 @@ function Register() {
             className={`${
               errors.confirmPassword
                 ? "border bg-red-50  border-red-500 text-red-900 placeholder-red-700  focus:border-red-500 focus:ring-red-500"
-                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5"
+                : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5 dark:placeholder-gray-400"
             } w-full h-10 px-3  rounded-md outline-none`}
             placeholder="Confirm Password"
           />

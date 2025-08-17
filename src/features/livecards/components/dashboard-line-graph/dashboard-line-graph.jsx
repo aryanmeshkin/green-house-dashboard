@@ -9,10 +9,10 @@ import {
   Tooltip,
   Legend,
   Ticks,
+  plugins,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useAppContext } from "../../../../contexts/app-contexts";
-
 
 ChartJS.register(
   LineElement,
@@ -24,20 +24,34 @@ ChartJS.register(
   Legend
 );
 function DashboardLineGraph() {
-  const{modeState,changeMode}=useAppContext()
+  const { modeState, changeMode } = useAppContext();
+  console.log(modeState);
   const option = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      tooltips: {
+        backgroundColor: "#f5f5f5",
+        titleFontColor: "#333",
+        bodyFontColor: "#666",
+        bodySpacing: 4,
+        xPadding: 12,
+        mode: "nearest",
+        intersect: 0,
+        position: "nearest",
+      },
+    },
     scales: {
       "y-left": {
         type: "linear",
         position: "left",
         title: {
           display: true,
-          text: "دما (°C)",
+          text: "Temperature(°C)",
+          color: modeState === true ? "#fff" : "#000",
         },
-        Ticks: {
-          color: modeState === "dark" ? "#fff" : "#000",
+        ticks: {
+          color: modeState === true ? "#fff" : "#000",
         },
       },
       "y-right": {
@@ -46,9 +60,10 @@ function DashboardLineGraph() {
         title: {
           display: true,
           text: "رطوبت (%)",
-          Ticks: {
-            color: modeState === "dark" ? "#fff" : "#000",
-          },
+          color: modeState === true ? "#fff" : "#000",
+        },
+        ticks: {
+          color: modeState === true ? "#fff" : "#000",
         },
         grid: {
           drawOnChartArea: false, // جلوگیری از تداخل خطوط شبکه
@@ -58,6 +73,9 @@ function DashboardLineGraph() {
         title: {
           display: true,
           text: "ساعت",
+        },
+        ticks: {
+          color: modeState === true ? "#fff" : "#000",
         },
       },
     },
