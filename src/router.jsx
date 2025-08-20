@@ -9,6 +9,7 @@ import Register, {
   RegisterAction,
 } from "./features/identity/components/register";
 import AuthLayout from "./layout/auth-layout/auth-layout";
+import Map from "./features/map/map";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/graphs",
         element: <GrapgPage />,
+      },
+      {
+        path: "/map",
+        element: <Map />,
       },
     ],
   },
