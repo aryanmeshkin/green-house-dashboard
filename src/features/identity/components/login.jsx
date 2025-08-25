@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import {
   Link,
   useActionData,
@@ -9,6 +10,7 @@ import {
   useSubmit,
 } from "react-router";
 import { loginUser } from "../../../api/api";
+import { useTokenContext } from "../token-context/token-context";
 
 function Login() {
   const {
@@ -21,10 +23,47 @@ function Login() {
   // Hook for submitting in react-router-dom
   const submitForm = useSubmit();
 
-  // function to handle the data of the form and excute the action in react-router-dom
+  // function to handle the data of the form
+
+  const navigate = useNavigate();
+
+  const { accessToken, setAccessToken } = useTokenContext();
+
   const onSubmit = async (data) => {
-    submitForm(data, { method: "post" });
+    try {
+      const response = await loginUser(data);
+      if (response.status === 200) {
+        setAccessToken(response?.data.token);
+        toast.success("you logged in");
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      }
+    } catch (error) {
+      if (error.response) {
+        // پاسخ از سرور
+        switch (error.response.status) {
+          case 400:
+            toast.error(
+              error.response.data?.message || "username or password incorrect"
+            );
+            break;
+          case 500:
+            toast.error("server error");
+            break;
+          default:
+            toast.error(error.response.data?.message || "unknown error");
+        }
+      } else if (error.request) {
+        // پاسخی دریافت نشده
+        toast.error("ارتباط با سرور برقرار نشد 🌐");
+      } else {
+        // خطای غیرمنتظره
+        toast.error("مشکل غیرمنتظره‌ای رخ داد");
+      }
+    }
   };
+
   // Hook for managing navigation state
   const navigation = useNavigation();
   const isSubmitting = navigation.state !== "idle";
@@ -32,22 +71,12 @@ function Login() {
   // Getting the return of RegisterAction
   const isSuccessOperation = useActionData();
 
-  // Redirecting after successful operation in 2 seconds
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (isSuccessOperation) {
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
-    }
-  }, [isSuccessOperation]);
-
   const routeError = useRouteError();
 
   return (
     <div className="min-h-screen bg-gradient-to-l from-teal-100 to-teal-500 dark:from-slate-600 dark:to-slate-800 py-6 flex flex-col justify-center items-center  relative overflow-hidden sm:py-12">
       <div className="relative px-4 pt-7 pb-8 bg-white dark:bg-gray-700 shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-2xl flex flex-col items-center gap-8">
-      <div className="text-5xl text-gray-700 dark:text-white">LOGIN</div>
+        <div className="text-5xl text-gray-700 dark:text-white">LOGIN</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* USERNAME INPUT */}
 
@@ -136,34 +165,8 @@ function Login() {
           </div>
         </form>
       </div>
-      {/* succussful Registration alert */}
-      {isSuccessOperation && (
-        <div className="text-xl mt-10 bg-green-300 p-4 rounded-2xl text-white">
-          Welcome
-        </div>
-      )}
-      {/* Errors alerts */}
-      {routeError && (
-        <div className="text-xl mt-10 bg-red-500 p-4 rounded-2xl text-white">
-          {routeError.response?.data.message}
-        </div>
-      )}
     </div>
   );
 }
 
 export default Login;
-
-export async function loginAction({ request }) {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  console.log(data);
-  // Posting User Data To Server
-  const response = await loginUser(data);
-  console.log(response);
-  if (response.status === 200) {
-    localStorage.setItem("token", response?.data.token);
-    // localStorage.setItem("refreshToken" , response?.data.token)
-  }
-  return response.status === 200;
-}

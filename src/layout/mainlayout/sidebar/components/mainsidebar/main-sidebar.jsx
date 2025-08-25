@@ -120,19 +120,71 @@ function MainSidebar() {
               {" "}
               <path
                 d="M4 10.1433C4 5.64588 7.58172 2 12 2C16.4183 2 20 5.64588 20 10.1433C20 14.6055 17.4467 19.8124 13.4629 21.6744C12.5343 22.1085 11.4657 22.1085 10.5371 21.6744C6.55332 19.8124 4 14.6055 4 10.1433Z"
-               
                 stroke-width="1.5"
               ></path>{" "}
-              <circle
-                cx="12"
-                cy="10"
-                r="3"
-                
-                stroke-width="1.5"
-              ></circle>{" "}
+              <circle cx="12" cy="10" r="3" stroke-width="1.5"></circle>{" "}
             </g>
           </svg>
           <span className="ms-3">Map</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          onClick={changeMenuState}
+          to="/reporter"
+          className={({ isActive }) =>
+            isActive
+              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-teal-200"
+              : "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group "
+          }
+        >
+          <svg
+            className="w-6 h-6 stroke-gray-500 transition duration-200 dark:text-gray-400 group-hover:stroke-gray-900 dark:group-hover:fill-white"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                d="M20 10V7C20 5.89543 19.1046 5 18 5H6C4.89543 5 4 5.89543 4 7V10M20 10V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V10M20 10H4M8 3V7M16 3V7"
+                
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>{" "}
+              <rect
+                x="6"
+                y="12"
+                width="3"
+                height="3"
+                rx="0.5"
+                
+              ></rect>{" "}
+              <rect
+                x="10.5"
+                y="12"
+                width="3"
+                height="3"
+                rx="0.5"
+                
+              ></rect>{" "}
+              <rect
+                x="15"
+                y="12"
+                width="3"
+                height="3"
+                rx="0.5"
+                
+              ></rect>{" "}
+            </g>
+          </svg>
+          <span className="ms-3">Report</span>
         </NavLink>
       </li>
     </ul>
