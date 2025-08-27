@@ -1,9 +1,17 @@
-import { io } from "socket.io-client";
-
-// آدرس بک‌اند رو اینجا میذاری
-const SOCKET_URL = "http://37.152.181.124"; // این رو از بک‌اند بگیر
-
-export const socket = io(SOCKET_URL, {
-  transports: ["websocket"], // فقط WebSocket
-  reconnection: true,        // دوباره وصل شه اگه قطع شد
-});
+export function createWebSocket(url,onMessage){
+    const ws = new WebSocket(url)
+    ws.onopen = ()=>{
+        console.log(url," : is connected");
+    }
+    ws.onclose = ()=>{
+        console.log();
+    }
+    ws.onmessage = (event)=>{
+        const data = JSON.parse(event.data)
+        onMessage(data)
+    }
+    ws.onerro = (error)=>{
+        console.log("error is :",error);
+    }
+    return ws
+}

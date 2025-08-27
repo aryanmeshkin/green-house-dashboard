@@ -12,11 +12,11 @@ function AccessDashboard({children}) {
       localStorage.setItem("token", accessToken);
     }
   }, [accessToken]);
-  useEffect(()=>{
-    if (!token && !accessToken) {
-      navigate("/login");
-    }
-  },[token,accessToken])
+  // useEffect(()=>{
+  //   if (!token && !accessToken) {
+  //     navigate("/login");
+  //   }
+  // },[token,accessToken])
 
   return children ;
 }
