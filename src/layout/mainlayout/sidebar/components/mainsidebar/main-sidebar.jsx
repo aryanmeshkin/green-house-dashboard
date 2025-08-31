@@ -13,7 +13,7 @@ function MainSidebar() {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-teal-200"
+              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-[#4B77BE]"
               : "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group "
           }
         >
@@ -31,7 +31,7 @@ function MainSidebar() {
           to="/controls"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-teal-200"
+              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-[#4B77BE]"
               : "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group "
           }
         >
@@ -61,7 +61,7 @@ function MainSidebar() {
           to="/graphs"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-teal-200"
+              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-[#4B77BE]"
               : "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group "
           }
         >
@@ -100,7 +100,7 @@ function MainSidebar() {
           to="map"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-teal-200"
+              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-[#4B77BE]"
               : "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group "
           }
         >
@@ -134,7 +134,7 @@ function MainSidebar() {
           to="/reporter"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-teal-200"
+              ? "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white  dark:hover:bg-gray-700 group bg-[#4B77BE]"
               : "flex items-center transition duration-100 p-2 cursor-pointer text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group "
           }
         >

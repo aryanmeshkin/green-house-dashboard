@@ -75,7 +75,7 @@ function Login() {
 
   return (
     <div className="min-h-screen bg-gradient-to-l from-teal-100 to-teal-500 dark:from-slate-600 dark:to-slate-800 py-6 flex flex-col justify-center items-center  relative overflow-hidden sm:py-12">
-      <div className="relative px-4 pt-7 pb-8 bg-white dark:bg-gray-700 shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-2xl flex flex-col items-center gap-8">
+      <div className="w-75 sm:w-100 md:w-120  relative px-4 pt-7 pb-8 bg-white dark:bg-gray-700 shadow-xl mx-auto   rounded-2xl flex flex-col items-center gap-8">
         <div className="text-5xl text-gray-700 dark:text-white">LOGIN</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* USERNAME INPUT */}
@@ -123,7 +123,7 @@ function Login() {
               errors.password
                 ? "border bg-red-50  border-red-500 text-red-900 placeholder-red-700  focus:border-red-500 focus:ring-red-500"
                 : "border border-gray-300 focus:border-blue-500 focus:ring-blue-500 mb-5 dark:placeholder-gray-400"
-            } w-full h-10 px-3  rounded-md outline-none`}
+            } w-full h-10 px-3 rounded-md outline-none`}
             placeholder="Password"
           />
           {errors.password && errors.password.type === "required" && (
@@ -139,30 +139,24 @@ function Login() {
               </p>
             )}
 
-          {/* REMEMBER ME  */}
+          {/* Buttons  */}
 
-          <div className="flex gap-2 items-center justify-center">
-            <button
-              disabled={isSubmitting}
-              className={`${
-                isSubmitting ? "bg-green-800" : "bg-green-500 hover:bg-blue-700"
-              }  shadow-xl text-white uppercase text-sm font-semibold px-5 py-3 rounded cursor-pointer`}
-            >
-              {isSubmitting ? "Submitting" : "sign in"}
-            </button>
-            <Link to="/register">
-              <button
-                disabled={isSubmitting}
-                className={`${
-                  isSubmitting
-                    ? "bg-green-800"
-                    : "bg-green-500 hover:bg-blue-700"
-                } shadow-xl text-white uppercase text-sm font-semibold px-14 py-3 rounded cursor-pointer`}
-              >
-                Register
-              </button>
-            </Link>
-          </div>
+          <div className="flex gap-2 items-center justify-center sm:flex-row flex-col-reverse ">
+                      <button
+                        disabled={isSubmitting}
+                        className=" bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-xs lg:text-sm font-semibold px-5 py-3 rounded cursor-pointer w-full sm:w-30 "
+                      >
+                        {isSubmitting ? "Submitting" : "Sign Up"}
+                      </button>
+                      <Link to="/register">
+                        <button
+                          disabled={isSubmitting}
+                          className=" bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-xs lg:text-sm font-semibold px-14 py-3 rounded cursor-pointer w-full sm:w-60 lg:w-70"
+                        >
+                          Registered Before?
+                        </button>
+                      </Link>
+                    </div>
         </form>
       </div>
     </div>

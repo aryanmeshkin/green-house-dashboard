@@ -3,7 +3,7 @@ import React from "react";
 function SoilMoistureIcon() {
   return (
     <svg
-      className ="h-8 w-8 fill-gray-700"
+      className ="h-8 w-8 fill-gray-700 group-hover:fill-white"
       viewBox="0 -8.5 1041 1041"
       fill="#000000"
       version="1.1"

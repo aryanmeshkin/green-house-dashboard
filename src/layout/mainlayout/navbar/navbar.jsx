@@ -10,13 +10,13 @@ function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             to="/login"
-            className="text-xs sm:text-[16px] bg-transparent hover:bg-teal-200 text-gray-900 dark:text-white font-semibold hover:text-white py-1 px-2 sm:py-2 sm:px-4 border border-gray-500 hover:border-transparent rounded"
+            className="text-xs sm:text-[16px] bg-transparent hover:bg-[#4B77BE] text-gray-900 dark:text-white font-semibold hover:text-white py-1 px-2 sm:py-2 sm:px-4 border border-gray-500 hover:border-transparent rounded"
           >
             Sign In
           </Link>
           <Link
             to="/register"
-            className="text-xs sm:text-[16px] bg-transparent hover:bg-teal-200 text-gray-900 dark:text-white font-semibold hover:text-white py-1 px-2 sm:py-2 sm:px-4 border border-gray-500 hover:border-transparent rounded"
+            className="text-xs sm:text-[16px] bg-transparent hover:bg-[#4B77BE] text-gray-900 dark:text-white font-semibold hover:text-white py-1 px-2 sm:py-2 sm:px-4 border border-gray-500 hover:border-transparent rounded"
           >
             Sign Up
           </Link>

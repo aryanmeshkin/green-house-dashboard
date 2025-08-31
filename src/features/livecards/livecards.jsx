@@ -8,6 +8,7 @@ import WaterDashboard from "./components/water-dashboard-controler/water-dashboa
 import TemperatureCard from "./components/cards/temperature-card/temperature-card";
 import AirHumidityCard from "./components/cards/air-humidity-card/air-humidity-card";
 import SoilMoistureCard from "./components/cards/soil-moisture-card/soil-moisture-card";
+import GaugeTemperature from "./components/gauge-charts/gauge-temperature";
 
 function LiveCards() {
   const { menuState } = useAppContext();
@@ -16,10 +17,10 @@ function LiveCards() {
       <div
         className={`${
           menuState && "mt-12 sm:mt-0"
-        } p-6 rounded-lg dark:border-gray-700`}
+        } p-6 rounded-lg dark:border-gray-700 border-2 border-gray-200 border-dashed `}
       >
         {/* First Part */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
           {/* Temperature Card */}
           <TemperatureCard />
           {/* Air Humidity Card */}
@@ -28,7 +29,7 @@ function LiveCards() {
           <SoilMoistureCard />
         </div>
         {/* Second Part */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3   gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3  gap-4 mb-4">
           <div className="w-full h-80 xl:h-100 col-span-1 lg:col-span-2 shadow-lg rounded-xl p-10 bg-white dark:bg-gray-800 hover:shadow-xl ">
             <DashboardLineGraph />
           </div>
@@ -41,10 +42,9 @@ function LiveCards() {
 
             <WaterDashboard />
           </div>
-          <div></div>
         </div>
         {/* Third Part */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="w-full bg-white dark:bg-gray-800 shadow-lg rounded-xl p-10 hover:shadow-xl h-64">
             <DashboardBarGraph />
           </div>

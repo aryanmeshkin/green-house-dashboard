@@ -33,13 +33,13 @@ function Reporter() {
   }
 
   return (
-    <div className="p-4 sm:ml-64 flex flex-col justify-center items-center gap-3">
+    <div className="p-4 sm:ml-64 flex flex-col justify-center items-center gap-3 dark:bg-gray-900 h-screen">
       <div>
 
         
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="mb-3 font-bold text-xl">Enter Your Range Date</h1>
+        <h1 className="mb-3 font-bold text-xl dark:text-gray-400">Enter Your Range Date</h1>
         <div className="flex gap-4 relative items-center justify-center ">
           {/* input شروع */}
           <input

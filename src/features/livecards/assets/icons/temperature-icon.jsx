@@ -2,7 +2,7 @@ import React from "react";
 
 function TemperatureIcon() {
   return (
-    <svg className="h-8 w-8 fill-gray-700" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
+    <svg className="h-8 w-8 fill-gray-700 group-hover:fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"

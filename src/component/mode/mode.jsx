@@ -13,7 +13,7 @@ function Mode() {
         <button
           onClick={changeMode}
           type="button"
-          className="font-medium text-gray-800 rounded-full hover:bg-gray-200 focus:outline-hidden  dark:text-neutral-200 dark:hover:bg-neutral-800"
+          className="font-medium text-gray-800 rounded-full hover:bg-gray-200  focus:outline-hidden  dark:text-neutral-200 dark:hover:bg-[#4B77BE]"
           data-hs-theme-click-value="dark"
         >
           <span className="group inline-flex shrink-0 justify-center items-center size-13">
@@ -37,7 +37,7 @@ function Mode() {
         <button
           onClick={changeMode}
           type="button"
-          className=" font-medium text-gray-800 rounded-full hover:bg-teal-200 focus:outline-hidden  dark:text-neutral-200 dark:hover:bg-neutral-800"
+          className=" font-medium text-gray-800 rounded-full hover:bg-[#4B77BE] focus:outline-hidden  dark:text-neutral-200 hover:text-white dark:hover:bg-neutral-800"
           data-hs-theme-click-value="light"
         >
           <span className="group inline-flex shrink-0 justify-center items-center size-13">
