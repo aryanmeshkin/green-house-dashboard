@@ -1,26 +1,49 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { createWebSocket } from "../../../api/socket";
+import { createSocket, createWebSocket } from "../../../api/socket";
+import { getControl } from "../../../api/api";
+import useAxiosPrivate from "../../identity/hooks/useAxiosPrivate";
 
 const DashboardContext = createContext();
 
 function DashboardProvider({ children }) {
+  const axiosPrivate = useAxiosPrivate();
   const [lastTen, setLastTen] = useState("");
   const [sensorData, setSensorData] = useState("");
+  const [contolData, setControlData] = useState("");
   useEffect(() => {
-    const w1 = createWebSocket("https://37.152.181.124/sensor-data", (data) => {
-      setSensorData(data);
-    });
-    const w2 = createWebSocket(
-      "https://37.152.181.124/sensor-last10",
-      (data) => {
-        setLastTen(data);
-      }
+    if (!accessToken) return;
+
+    // فراخوانی تابع createSocket به جای نوشتن مستقیم socket.io
+    const sensorSocket = createSocket(
+      "http://37.152.181.124:2000",
+      (data) => setSensorData(data),
+      accessToken
     );
-    return () => {
-      w1.close();
-      w2.close();
+
+    const lastTenSocket = createSocket(
+      "http://37.152.181.124:2000",
+      (data) => setLastTen(data),
+      accessToken
+    );
+
+    // گرفتن control data با axiosPrivate
+    const fetchControlData = async () => {
+      try {
+        const res = await axiosPrivate.get("/get-control");
+        setControlData(res.data);
+      } catch (err) {
+        console.error("Failed to fetch control data:", err);
+      }
     };
-  }, []);
+
+    fetchControlData();
+
+    // Cleanup هنگام unmount
+    return () => {
+      sensorSocket.close();
+      lastTenSocket.close();
+    };
+  }, [accessToken, axiosPrivate]);
 
   return (
     <DashboardContext.Provider value={{ lastTen, sensorData }}>

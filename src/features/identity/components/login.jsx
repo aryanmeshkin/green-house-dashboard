@@ -9,7 +9,7 @@ import {
   useRouteError,
   useSubmit,
 } from "react-router";
-import { loginUser } from "../../../api/api";
+import api from "./../../../api/api";
 import { useTokenContext } from "../token-context/token-context";
 
 function Login() {
@@ -31,10 +31,10 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await loginUser(data);
+      const response = await api.post("/auth/login", data);
       if (response.status === 200) {
-        setAccessToken(response?.data.token);
         toast.success("you logged in");
+        setAccessToken(response.data.accessToken);
         setTimeout(() => {
           navigate("/");
         }, 1000);
@@ -142,21 +142,21 @@ function Login() {
           {/* Buttons  */}
 
           <div className="flex gap-2 items-center justify-center sm:flex-row flex-col-reverse ">
-                      <button
-                        disabled={isSubmitting}
-                        className=" bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-xs lg:text-sm font-semibold px-5 py-3 rounded cursor-pointer w-full sm:w-30 "
-                      >
-                        {isSubmitting ? "Submitting" : "Sign Up"}
-                      </button>
-                      <Link to="/register">
-                        <button
-                          disabled={isSubmitting}
-                          className=" bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-xs lg:text-sm font-semibold px-14 py-3 rounded cursor-pointer w-full sm:w-60 lg:w-70"
-                        >
-                          Registered Before?
-                        </button>
-                      </Link>
-                    </div>
+            <button
+              disabled={isSubmitting}
+              className=" bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-xs lg:text-sm font-semibold px-5 py-3 rounded cursor-pointer w-full sm:w-30 "
+            >
+              {isSubmitting ? "Submitting" : "Sign In"}
+            </button>
+            <Link to="/register">
+              <button
+                disabled={isSubmitting}
+                className=" bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-xs lg:text-sm font-semibold px-14 py-3 rounded cursor-pointer w-full sm:w-60 lg:w-70"
+              >
+                Registered Before?
+              </button>
+            </Link>
+          </div>
         </form>
       </div>
     </div>

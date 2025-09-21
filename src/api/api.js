@@ -1,24 +1,23 @@
 import axios from "axios";
 
-const BASE_URL = "http://37.152.181.124"
-
+const BASE_URL = "http://37.152.181.124:2000";
 
 const api = axios.create({
   baseURL: BASE_URL,
+  withCredentials: true,
 });
 
-// api.interceptors.request.use(async(config){
-//   const token = localStorage.getItem("",)
-//   if(token){
-//     config.headers = {
-//       Authorization : `bearer ${token}`
-//     }
-//   }
-// })
+export const axiosPrivate = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true,
+});
 
-export const registerUser = (data) => api.post("/auth/register", data);
+export const registerUser = (data) => axiosPrivate.post("/auth/register", data);
 export const loginUser = (data) => api.post("/auth/login", data);
-export const getSensorSummary = () => api.get("/sensor-summary");
-export const sendControl = (data) => api.post("/get-control", data);
+export const getSensorSummary = () => axiosPrivate.get("/sensor-summary");
+export const sendControl = (data) => axiosPrivate.post("/get-control", data);
+export const getControl = () => axiosPrivate.get("/get-control");
+export const getReport = (data) =>
+  axiosPrivate.get(`/reports?startDate=${data.startDate}&endDate=${data.endDate}`);
 
 export default api;

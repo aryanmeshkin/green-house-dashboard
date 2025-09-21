@@ -11,8 +11,9 @@ import Register, {
 import AuthLayout from "./layout/auth-layout/auth-layout";
 import Map from "./features/map/map";
 import AccessDashboard from "./features/identity/components/access-dashboard";
+import Reporter from "./features/reporter/reporter";
 
-import Reporter from "./component/reporter";
+
 
 const router = createBrowserRouter([
   {

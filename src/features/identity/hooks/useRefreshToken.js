@@ -1,0 +1,15 @@
+import axios from "axios";
+import { useTokenContext } from "../token-context/token-context";
+import api from "../../../api/api";
+const useRefreshToken = () => {
+  const { accessToken, setAccessToken } = useTokenContext();
+  const refresh = async () => {
+    const response = await api.post("/auth/refresh");
+    const newAccessToken = response.data.accessToken;
+    setAccessToken(newAccessToken);
+    return response.data.accessToken;
+  };
+  return refresh;
+};
+
+export default useRefreshToken;

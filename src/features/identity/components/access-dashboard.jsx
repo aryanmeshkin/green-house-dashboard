@@ -1,24 +1,45 @@
-import { useNavigate } from "react-router";
-import { useTokenContext } from "../token-context/token-context";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-function AccessDashboard({children}) {
-  const navigate = useNavigate();
+import useRefreshToken from "../hooks/useRefreshToken";
+import { useTokenContext } from "../token-context/token-context";
+
+import { useNavigate } from "react-router";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+
+function AccessDashboard({ children }) {
   const { accessToken, setAccessToken } = useTokenContext();
-  const token = localStorage.getItem("token");
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const axiosPrivate = useAxiosPrivate();
+   const [authorized, setAuthorized] = useState(false)
 
   useEffect(() => {
-    if (accessToken) {
-      localStorage.setItem("token", accessToken);
+    if (!accessToken) {
+      setLoading(false);
+      navigate("/login", { replace: true });
+      return;
     }
-  }, [accessToken]);
-  // useEffect(()=>{
-  //   if (!token && !accessToken) {
-  //     navigate("/login");
-  //   }
-  // },[token,accessToken])
 
-  return children ;
+    const verifyAccess = async () => {
+      try {
+        const response = await axiosPrivate.get("/sensor-summary");
+
+        setAuthorized(true);
+      } catch (err) {
+        setAccessToken(null);
+        navigate("/login", { replace: true });
+      }finally{
+        setLoading(false)
+      }
+    };
+
+    verifyAccess();
+  }, [accessToken, navigate, axiosPrivate, setAccessToken]);
+
+  if (loading) return <div>در حال بررسی اعتبار توکن...</div>;
+  if (!authorized) return null;
+
+  return children;
 }
 
 export default AccessDashboard;
