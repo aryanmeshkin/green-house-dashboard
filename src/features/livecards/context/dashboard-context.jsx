@@ -3,6 +3,7 @@ import { createSocket } from "../../../api/socket";
 import { getControl } from "../../../api/api";
 import useAxiosPrivate from "../../identity/hooks/useAxiosPrivate";
 import { useTokenContext } from "../../identity/token-context/token-context";
+import { useAppContext } from "../../../contexts/app-contexts";
 
 const DashboardContext = createContext();
 
@@ -11,7 +12,7 @@ function DashboardProvider({ children }) {
   const { accessToken, setAccessToken } = useTokenContext();
   const [lastTen, setLastTen] = useState("");
   const [sensorData, setSensorData] = useState("");
-  const [contolData, setControlData] = useState("");
+  
   useEffect(() => {
     if (!accessToken) {
       console.log("اکسس نبود");
@@ -32,16 +33,9 @@ function DashboardProvider({ children }) {
     );
 
     // گرفتن control data با axiosPrivate
-    const fetchControlData = async () => {
-      try {
-        const res = await axiosPrivate.get("/get-control");
-        setControlData(res.data);
-      } catch (err) {
-        console.error("Failed to fetch control data:", err);
-      }
-    };
+    
 
-    fetchControlData();
+  
 
     // Cleanup هنگام unmount
     return () => {
@@ -51,7 +45,7 @@ function DashboardProvider({ children }) {
   }, [accessToken, axiosPrivate]);
 
   return (
-    <DashboardContext.Provider value={{ lastTen, sensorData }}>
+    <DashboardContext.Provider value={{ lastTen, sensorData  }}>
       {children}
     </DashboardContext.Provider>
   );

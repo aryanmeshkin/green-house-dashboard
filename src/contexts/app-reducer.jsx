@@ -3,23 +3,23 @@ const appReducer = (state , action)=>{
         case "FANSTATE" :
             return {
                 ...state,
-                fanState : !state.fanState
+                fanState : action.payload !== undefined ? action.payload : !state.fanState
             }
         case "PUMPSTATE" : 
             return {
                 ...state,
-                pumpState : !state.pumpState
+                pumpState : action.payload !== undefined ? action.payload : !state.pumpState,
                 
             }
         case "LEDSTATE" :
             return{
                 ...state,
-                ledState : !state.ledState
+                ledState :  action.payload !== undefined ? action.payload : !state.ledState,
             }
         case "POWERSTATE" :
             return{
                 ...state,
-                powerState : !state.powerState
+                powerState : action.payload !== undefined ? action.payload : !state.powerState,
             }
         case "MENUTOGGLE" :
             return{

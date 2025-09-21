@@ -5,9 +5,9 @@ import { TokenProvider } from "./features/identity/token-context/token-context.j
 
 
 createRoot(document.getElementById("root")).render(
-  <AppProvider>
     <TokenProvider>
+  <AppProvider>
       <App />
-    </TokenProvider>
   </AppProvider>
+    </TokenProvider>
 );
