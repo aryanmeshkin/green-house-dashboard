@@ -1,17 +1,22 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { createSocket, createWebSocket } from "../../../api/socket";
+import { createSocket } from "../../../api/socket";
 import { getControl } from "../../../api/api";
 import useAxiosPrivate from "../../identity/hooks/useAxiosPrivate";
+import { useTokenContext } from "../../identity/token-context/token-context";
 
 const DashboardContext = createContext();
 
 function DashboardProvider({ children }) {
   const axiosPrivate = useAxiosPrivate();
+  const { accessToken, setAccessToken } = useTokenContext();
   const [lastTen, setLastTen] = useState("");
   const [sensorData, setSensorData] = useState("");
   const [contolData, setControlData] = useState("");
   useEffect(() => {
-    if (!accessToken) return;
+    if (!accessToken) {
+      console.log("اکسس نبود");
+      return;
+    }
 
     // فراخوانی تابع createSocket به جای نوشتن مستقیم socket.io
     const sensorSocket = createSocket(

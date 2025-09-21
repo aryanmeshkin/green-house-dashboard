@@ -39,6 +39,7 @@ function Reporter() {
     console.log(endDay);
     const data = { startDate: startDay, endDate: endDay };
     const reportData = axiosPrivate.get(`/reports?startDate=${data.startDate}&endDate=${data.endDate}`);
+    console.log(reportData.data);
   }
 
   const handleRange = (values) => {

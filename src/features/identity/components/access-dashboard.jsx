@@ -14,21 +14,21 @@ function AccessDashboard({ children }) {
    const [authorized, setAuthorized] = useState(false)
 
   useEffect(() => {
-    if (!accessToken) {
-      setLoading(false);
-      navigate("/login", { replace: true });
-      return;
-    }
+    
 
     const verifyAccess = async () => {
       try {
-        const response = await axiosPrivate.get("/sensor-summary");
+        console.log("📤 Sending verify request...");
+        const response = await axiosPrivate.get("/reports?startDate=2025-09-01&endDate=2025-09-13");
+        console.log("✅ verifyAccess success:", response.data);
 
         setAuthorized(true);
       } catch (err) {
+        console.error("❌ verifyAccess failed:", err);
         setAccessToken(null);
         navigate("/login", { replace: true });
       }finally{
+        console.log("⏳ verifyAccess finished");
         setLoading(false)
       }
     };

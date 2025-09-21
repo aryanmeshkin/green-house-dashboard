@@ -5,6 +5,7 @@ const useRefreshToken = () => {
   const { accessToken, setAccessToken } = useTokenContext();
   const refresh = async () => {
     const response = await api.post("/auth/refresh");
+    console.log(response);
     const newAccessToken = response.data.accessToken;
     setAccessToken(newAccessToken);
     return response.data.accessToken;
