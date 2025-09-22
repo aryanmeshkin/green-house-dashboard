@@ -8,10 +8,10 @@ import {
 import appReducer from "./app-reducer";
 const AppContext = createContext();
 const initialState = {
-  fanState: false,
-  pumpState: false,
-  ledState: false,
-  powerState: false,
+  fanState: null,
+  pumpState: null,
+  lampState: null,
+  valveState: null,
   menuState: false,
   modeState:
     localStorage.getItem("mode") !== null
@@ -27,6 +27,7 @@ function AppProvider({ children }) {
   const [controlData, setControlData] = useState(null);
   const axiosPrivate = useAxiosPrivate();
   const { accessToken, setAccessToken } = useTokenContext();
+  
   useEffect(() => {
     if (!accessToken) return;
 
@@ -34,16 +35,16 @@ function AppProvider({ children }) {
       try {
         const res = await axiosPrivate.get("/get-control");
         setControlData(res.data);
-
+        console.log(res.data);
         // ست کردن مقادیر اولیه با payload
         if (res.data.fan !== undefined)
           dispatch({ type: "FANSTATE", payload: !!res.data.fan });
         if (res.data.pump !== undefined)
           dispatch({ type: "PUMPSTATE", payload: !!res.data.pump });
-        if (res.data.led !== undefined)
-          dispatch({ type: "LEDSTATE", payload: !!res.data.led });
-        if (res.data.power !== undefined)
-          dispatch({ type: "POWERSTATE", payload: !!res.data.power });
+        if (res.data.lamp !== undefined)
+          dispatch({ type: "LEDSTATE", payload: !!res.data.lamp });
+        if (res.data.valve !== undefined)
+          dispatch({ type: "POWERSTATE", payload: !!res.data.valve });
       } catch (err) {
         console.error("Failed to fetch control data:", err);
       }
@@ -70,6 +71,8 @@ function AppProvider({ children }) {
   const changeMode = () => {
     dispatch({ type: "MODE" });
   };
+
+  
 
   return (
     <AppContext.Provider

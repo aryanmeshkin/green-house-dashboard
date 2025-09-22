@@ -4,7 +4,7 @@ import api from "../../../api/api";
 const useRefreshToken = () => {
   const { accessToken, setAccessToken } = useTokenContext();
   const refresh = async () => {
-    const response = await api.post("/auth/refresh");
+    const response = await api.get("/auth/refresh");
     console.log(response);
     const newAccessToken = response.data.accessToken;
     setAccessToken(newAccessToken);

@@ -2,11 +2,11 @@ import React from "react";
 import { useAppContext } from "@/app-contexts";
 
 function LightIcon() {
-  const { ledState } = useAppContext();
+  const { lampState } = useAppContext();
   return (
     <svg
       className={`${
-        ledState
+        lampState
           ? "fill-yellow-300 w-25 h-25 animate-ledspin"
           : " w-20 h-20 fill-black dark:fill-gray-400"
       }`}

@@ -3,9 +3,10 @@ import { useAppContext } from "../../../../contexts/app-contexts";
 
 function WaterDashboard() {
   const { changepumpState, pumpState } = useAppContext();
+  
   return (
     <div
-      onClick={changepumpState}
+      
       className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl flex justify-center items-center"
     >
       <div className="flex lg:flex-col gap-2 justify-center items-center h-24 w-24">

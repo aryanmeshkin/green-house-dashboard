@@ -2,17 +2,17 @@ import React from "react";
 import { useAppContext } from "../../../../contexts/app-contexts";
 
 function PowerDashboard() {
-  const { powerState, changepowerState } = useAppContext();
+  const { valveState, changepowerState } = useAppContext();
   return (
     <div
-      onClick={changepowerState}
+      
       className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl flex justify-center items-center"
     >
       <div className="flex lg:flex-col gap-2 justify-center items-center h-24 w-24">
         <div className="dark:text-white">Power</div>
         <svg
           className={`${
-            powerState
+            valveState
               ? "fill-orange-400 w-10 h-10 lg:w-12 lg:h-12 animate-ledspin"
               : " w-8 h-8 lg:w-10 lg:h-10 fill-black dark:fill-gray-400"
           }`}

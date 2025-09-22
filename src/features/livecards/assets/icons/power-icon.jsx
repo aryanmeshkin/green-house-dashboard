@@ -2,11 +2,11 @@ import React from "react";
 import { useAppContext } from "@/app-contexts";
 
 function PowerIcon() {
-    const { powerState } = useAppContext();
+    const { valveState } = useAppContext();
   return (
     <svg
       className={`${
-        powerState
+        valveState
           ? "fill-orange-400 w-25 h-25 animate-ledspin"
           : " w-20 h-20 fill-black dark:fill-gray-400"
       }`}

@@ -14,12 +14,12 @@ const appReducer = (state , action)=>{
         case "LEDSTATE" :
             return{
                 ...state,
-                ledState :  action.payload !== undefined ? action.payload : !state.ledState,
+                lampState :  action.payload !== undefined ? action.payload : !state.lampState,
             }
         case "POWERSTATE" :
             return{
                 ...state,
-                powerState : action.payload !== undefined ? action.payload : !state.powerState,
+                valveState : action.payload !== undefined ? action.payload : !state.valveState,
             }
         case "MENUTOGGLE" :
             return{
