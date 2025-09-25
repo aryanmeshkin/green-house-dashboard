@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 
-import useRefreshToken from "../hooks/useRefreshToken";
+
 import { useTokenContext } from "../token-context/token-context";
 
 import { useNavigate } from "react-router";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import api from "../../../api/api";
 
 function AccessDashboard({ children }) {
   const { accessToken, setAccessToken } = useTokenContext();
@@ -19,7 +18,7 @@ function AccessDashboard({ children }) {
       try {
         console.log("📤 Sending verify request...");
         const response = await axiosPrivate.get(
-          "/reports?startDate=2025-09-01&endDate=2025-09-13"
+          "/get-control"
         );
         console.log("✅ verifyAccess success:", response.data);
 
@@ -27,7 +26,7 @@ function AccessDashboard({ children }) {
       } catch (err) {
         console.error("❌ verifyAccess failed:", err);
         setAccessToken(null);
-        navigate("/login", { replace: true });
+        window.location.replace("/login");
       } finally {
         console.log("⏳ verifyAccess finished");
         setLoading(false);

@@ -1,10 +1,8 @@
 import { axiosPrivate } from "../../../api/api";
 import { useEffect } from "react";
-import useRefreshToken from "./useRefreshToken";
 import { useTokenContext } from "../token-context/token-context";
 
 const useAxiosPrivate = () => {
-  const refresh = useRefreshToken();
   const { accessToken, setAccessToken } = useTokenContext();
   useEffect(() => {
     // making interceptor request
@@ -21,23 +19,29 @@ const useAxiosPrivate = () => {
     );
     // making interceptor response
     const responseIntercept = axiosPrivate.interceptors.response.use(
-      (response) => response,
-      async (error) => {
-        const prevRequest = error?.config;
-        console.log(error);
-        if (error?.response?.status === 401 && !prevRequest?.sent) {
-          prevRequest.sent = true;
-          try {
-            const newToken = await refresh();
-            console.log("new token from refresh:", newToken);
-            prevRequest.headers["Authorization"] = `Bearer ${newToken}`;
-            return axiosPrivate(prevRequest);
-          } catch (err) {
-            setAccessToken(null);
-            navigate("/login", { replace: true });
-            return Promise.reject(err);
+      (response) => {
+        if (response.status === 202) {
+          const newAccessToken = response?.data?.accessToken;
+          if (newAccessToken && !response.config._retry) {
+            setAccessToken(newAccessToken);
+            response.config._retry = true;
+            response.config.headers[
+              "Authorization"
+            ] = `Bearer ${newAccessToken}`;
+            return axiosPrivate(response.config);
           }
         }
+        return response;
+      },
+      async (error) => {
+        const status = error?.response?.status;
+
+        // ❌ اگر 401 بود → برو صفحه لاگین
+        if (status === 401) {
+          setAccessToken(null);
+          window.location.replace("/login");
+        }
+
         return Promise.reject(error);
       }
     );
@@ -45,7 +49,7 @@ const useAxiosPrivate = () => {
       axiosPrivate.interceptors.request.eject(requestIntercept);
       axiosPrivate.interceptors.response.eject(responseIntercept);
     };
-  }, [refresh, accessToken]);
+  }, [accessToken]);
   return axiosPrivate;
 };
 
