@@ -21,13 +21,13 @@ function DashboardProvider({ children }) {
 
     // فراخوانی تابع createSocket به جای نوشتن مستقیم socket.io
     const sensorSocket = createSocket(
-      "http://37.152.181.124:2000",
+      "http://37.152.181.124/backend/sensor-summary",
       (data) => setSensorData(data),
       accessToken
     );
 
     const lastTenSocket = createSocket(
-      "http://37.152.181.124:2000",
+      "http://37.152.181.124/backend/sensor-last10",
       (data) => setLastTen(data),
       accessToken
     );

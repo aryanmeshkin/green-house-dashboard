@@ -22,13 +22,12 @@ const useAxiosPrivate = () => {
       (response) => {
         if (response.status === 202) {
           const newAccessToken = response?.data?.accessToken;
-          if (newAccessToken && !response.config._retry) {
+          if (newAccessToken) {
             setAccessToken(newAccessToken);
-            response.config._retry = true;
-            response.config.headers[
+            
+            axiosPrivate.defaults.headers.common[
               "Authorization"
             ] = `Bearer ${newAccessToken}`;
-            return axiosPrivate(response.config);
           }
         }
         return response;
