@@ -22,7 +22,7 @@ function Reporter() {
   const { modeState } = useAppContext();
   const axiosPrivate = useAxiosPrivate();
 
-  function handleGetReport() {
+  async function handleGetReport() {
     if (!device) {
       return toast("لطفا دستگاه را انتخاب کنید");
     }
@@ -38,7 +38,7 @@ function Reporter() {
     console.log(startDay);
     console.log(endDay);
     const data = { startDate: startDay, endDate: endDay };
-    const reportData = axiosPrivate.get(`/reports?startDate=${data.startDate}&endDate=${data.endDate}`);
+    const reportData = await axiosPrivate.get(`/reports?startDate=${data.startDate}&endDate=${data.endDate}`);
     console.log(reportData.data);
   }
 

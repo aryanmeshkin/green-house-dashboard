@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 import { useTokenContext } from "../token-context/token-context";
 
 import { useNavigate } from "react-router";
@@ -17,16 +16,14 @@ function AccessDashboard({ children }) {
     const verifyAccess = async () => {
       try {
         console.log("📤 Sending verify request...");
-        const response = await axiosPrivate.get(
-          "/get-control"
-        );
+        const response = await axiosPrivate.get("/get-control");
         console.log("✅ verifyAccess success:", response.data);
 
         setAuthorized(true);
       } catch (err) {
         console.error("❌ verifyAccess failed:", err);
         setAccessToken(null);
-        window.location.replace("/login");
+        navigate("/login", { replace: true })
       } finally {
         console.log("⏳ verifyAccess finished");
         setLoading(false);

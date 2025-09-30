@@ -1,6 +1,7 @@
 import { axiosPrivate } from "../../../api/api";
 import { useEffect } from "react";
 import { useTokenContext } from "../token-context/token-context";
+import { useNavigate } from "react-router";
 
 const useAxiosPrivate = () => {
   const { accessToken, setAccessToken } = useTokenContext();
@@ -20,6 +21,7 @@ const useAxiosPrivate = () => {
     // making interceptor response
     const responseIntercept = axiosPrivate.interceptors.response.use(
       (response) => {
+        console.log(response);
         if (response.status === 202) {
           const newAccessToken = response?.data?.accessToken;
           if (newAccessToken) {
@@ -38,7 +40,7 @@ const useAxiosPrivate = () => {
         // ❌ اگر 401 بود → برو صفحه لاگین
         if (status === 401) {
           setAccessToken(null);
-          window.location.replace("/login");
+          navigate("/login", { replace: true })
         }
 
         return Promise.reject(error);
