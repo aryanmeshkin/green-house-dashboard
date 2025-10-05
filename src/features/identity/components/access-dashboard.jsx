@@ -9,7 +9,7 @@ function AccessDashboard({ children }) {
   const { accessToken, setAccessToken } = useTokenContext();
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const axiosPrivate = useAxiosPrivate();
+  const axiosPrivate = useAxiosPrivate(() => navigate("/login", { replace: true }));
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {

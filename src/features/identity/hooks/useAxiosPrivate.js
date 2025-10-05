@@ -1,10 +1,10 @@
 import { axiosPrivate } from "../../../api/api";
 import { useEffect } from "react";
 import { useTokenContext } from "../token-context/token-context";
-import { useNavigate } from "react-router";
 
-const useAxiosPrivate = () => {
+const useAxiosPrivate = (onUnauthorized) => {
   const { accessToken, setAccessToken } = useTokenContext();
+
   useEffect(() => {
     // making interceptor request
 
@@ -26,7 +26,7 @@ const useAxiosPrivate = () => {
           const newAccessToken = response?.data?.accessToken;
           if (newAccessToken) {
             setAccessToken(newAccessToken);
-            
+
             axiosPrivate.defaults.headers.common[
               "Authorization"
             ] = `Bearer ${newAccessToken}`;
@@ -36,11 +36,11 @@ const useAxiosPrivate = () => {
       },
       async (error) => {
         const status = error?.response?.status;
-
+        console.log(status);
         // ❌ اگر 401 بود → برو صفحه لاگین
         if (status === 401) {
           setAccessToken(null);
-          navigate("/login", { replace: true })
+          onUnauthorized()
         }
 
         return Promise.reject(error);

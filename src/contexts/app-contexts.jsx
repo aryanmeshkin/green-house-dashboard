@@ -34,17 +34,17 @@ function AppProvider({ children }) {
     const fetchControlData = async () => {
       try {
         const res = await axiosPrivate.get("/get-control");
-        setControlData(res.data);
-        console.log(res.data);
+        setControlData(res.data.desired);
+        console.log(res.data.desired);
         // ست کردن مقادیر اولیه با payload
-        if (res.data.fan !== undefined)
-          dispatch({ type: "FANSTATE", payload: !!res.data.fan });
-        if (res.data.pump !== undefined)
-          dispatch({ type: "PUMPSTATE", payload: !!res.data.pump });
-        if (res.data.lamp !== undefined)
-          dispatch({ type: "LEDSTATE", payload: !!res.data.lamp });
-        if (res.data.valve !== undefined)
-          dispatch({ type: "POWERSTATE", payload: !!res.data.valve });
+        if (res.data.desired.fan !== undefined)
+          dispatch({ type: "FANSTATE", payload: !!res.data.desired.fan });
+        if (res.data.desired.pump !== undefined)
+          dispatch({ type: "PUMPSTATE", payload: !!res.data.desired.pump });
+        if (res.data.desired.lamp !== undefined)
+          dispatch({ type: "LEDSTATE", payload: !!res.data.desired.lamp });
+        if (res.data.desired.valve !== undefined)
+          dispatch({ type: "POWERSTATE", payload: !!res.data.desired.valve });
       } catch (err) {
         console.error("Failed to fetch control data:", err);
       }
